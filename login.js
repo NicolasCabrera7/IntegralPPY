@@ -1,5 +1,9 @@
 const ingresa = document.getElementById("Ingresa");
 ingresa.addEventListener('click', validarAlumno);
+ingresa.addEventListener('click', function(event) {
+    event.preventDefault();
+});
+
 
 function Materia(nombre, semestre, puntajeParcial, puntajeFinal, calificacion) {
     this.nombre = nombre;
