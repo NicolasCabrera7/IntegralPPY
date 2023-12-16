@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Integral PPY</title>
     <script src="login.js" defer></script>
 </head>
@@ -19,14 +19,15 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Contraseña</label> <br>
-                <input id="contraseña" placeholder="Ingresa tu contraseña"><br>
+                <input type="password" id="contraseña" placeholder="Ingresa tu contraseña"><br>
             </div>
             <p id="mensaje"></p>
-            <button type="submit" id="Ingresa">Iniciar Sesion</button>
+            <button type="button" id="Ingresa">Iniciar Sesion</button>
         </div>
     </form>
-    <table id="table">
-
-    </table>
+    <div id="table-container">
+        <table class="table" id="table"></table>
+    </div>
 </body>
+
 </html>

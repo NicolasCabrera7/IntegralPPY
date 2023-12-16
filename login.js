@@ -1,9 +1,5 @@
 const ingresa = document.getElementById("Ingresa");
 ingresa.addEventListener('click', validarAlumno);
-ingresa.addEventListener('click', function(event) {
-    event.preventDefault();
-});
-
 
 function Materia(nombre, semestre, puntajeParcial, puntajeFinal, calificacion) {
     this.nombre = nombre;
@@ -13,7 +9,6 @@ function Materia(nombre, semestre, puntajeParcial, puntajeFinal, calificacion) {
     this.calificacion = calificacion;
 }
 
-// Definir una función constructora para crear objetos de alumno
 function Alumno(nombre, apellido, correo, contraseña, materias) {
     this.nombre = nombre;
     this.apellido = apellido;
@@ -21,17 +16,20 @@ function Alumno(nombre, apellido, correo, contraseña, materias) {
     this.contraseña = contraseña;
     this.materias = materias;
 }
-
-// Crear objetos de materia
 var materia1 = new Materia("Matemáticas", 1, 80, 90, "A");
 var materia2 = new Materia("Historia", 2, 75, 85, "B");
 var materia3 = new Materia("Ciencias", 1, 90, 88, "A-");
 var materia4 = new Materia("Inglés", 2, 88, 92, "A");
 var materia5 = new Materia("Programación", 3, 95, 94, "A+");
 
-// Crear objetos de alumno
 var alumno1 = new Alumno("Juan", "Pérez", "juan@email.com", "clave123", [materia1, materia2, materia3, materia4, materia5]);
-let alumnos = [alumno1];
+
+var alumno2 = new Alumno("María", "Gómez", "maria@email.com", "clave456", [materia2, materia3, materia4, materia5, materia1]);
+var alumno3 = new Alumno("Carlos", "López", "carlos@email.com", "clave789", [materia3, materia4, materia5, materia1, materia2]);
+var alumno4 = new Alumno("Ana", "Martínez", "ana@email.com", "claveabc", [materia4, materia5, materia1, materia2, materia3]);
+var alumno5 = new Alumno("Pedro", "Rodríguez", "pedro@email.com", "clavedef", [materia5, materia1, materia2, materia3, materia4]);
+
+var alumnos = [alumno1, alumno2, alumno3, alumno4, alumno5];
 
 
 function validarAlumno() {
@@ -53,38 +51,34 @@ function validarAlumno() {
     mensaje.style.display = "block";
 }
 
-
-
-function fnActualizarTabla(indice){
+function fnActualizarTabla(indice) {
     const divTabla = document.getElementById("table");
     const materias = alumnos[indice].materias;
-    if(materias.length === 0){
+
+    if (materias.length === 0) {
         divTabla.innerHTML = 'No existen materias registradas';
-        return;    
+        return;
     }
+
     const buff = [];
-    buff.push('<table>');
-    buff.push('    <tr>');
-    buff.push('      <th>Materia</th>');
-    buff.push('      <th>Semestre</th>');
-    buff.push('      <th>Puntaje Parcial</th>');
-    buff.push('      <th>Puntaje Final</th>');
-    buff.push('      <th>Calificacion</th>');
-    buff.push('    </tr>');
+    buff.push('<tr>');
+    buff.push('<th>Materia</th>');
+    buff.push('<th>Semestre</th>');
+    buff.push('<th>Puntaje Parcial</th>');
+    buff.push('<th>Puntaje Final</th>');
+    buff.push('<th>Calificacion</th>');
+    buff.push('</tr>');
 
-            
-    for(let i = 0; i< materias.length; i++){
-
+    for (let i = 0; i < materias.length; i++) {
         buff.push('<tr>');
-        buff.push('<td>'+ materias[i].nombre+'</td>');
-        buff.push('<td>'+ materias[i].semestre +'</td>');
-        buff.push('<td>'+ materias[i].puntajeParcial +'</td>');
-        buff.push('<td>'+ materias[i].puntajeFinal +'</td>');
-        buff.push('<td>'+ materias[i].calificacion +'</td>');
-        buff.push('<td>');
+        buff.push('<td>' + materias[i].nombre + '</td>');
+        buff.push('<td>' + materias[i].semestre + '</td>');
+        buff.push('<td>' + materias[i].puntajeParcial + '</td>');
+        buff.push('<td>' + materias[i].puntajeFinal + '</td>');
+        buff.push('<td>' + materias[i].calificacion + '</td>');
+        buff.push('</tr>');
     }
-    buff.push('</table>');
 
-    divTabla.innerHTML =  buff.join('\n');
-    divTabla.style.display = 'block';
+    divTabla.innerHTML = buff.join('\n');
 }
+
